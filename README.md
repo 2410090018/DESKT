@@ -2,7 +2,24 @@
 PyTorch implementation of DESKT (Decoupled Emotion-Driven Slip-Aware Knowledge Tracing).
 
 ## Abstract
-The aim of knowledge tracing (KT), which is a core task in intelligent educational systems, is to dynamically estimate the knowledge states of students and predict their future performance from historical learning interactions. In existing methods, incorrect responses are implicitly assumed to stem solely from insufficient knowledge mastery, thereby overlooking slips induced by noncognitive factors (e.g., emotional states) and treating them as noise to be suppressed. This assumption biases knowledge state estimation and limits the interpretability of model predictions. To address these limitations, we propose a decoupled emotion-driven slip-aware KT model (DESKT) that comprises two core modules: (i) a dynamic knowledge state modeling module that integrates the dynamic key--value memory networks (DKVMN) with item response theory (IRT) to estimate students' knowledge mastery and (ii) an emotion-driven dynamic slip module that uses an Emotion-GRU to estimate slip probabilities from emotional features. During inference, the knowledge mastery probability and slip probability are fused via multiplicative fusion. Furthermore, we introduce a knowledge state--guided decoupling optimization strategy that ensures independent and stable training of the two modules through gradient isolation and weakly supervised pseudolabels. The results of experiments on ASSISTments 2012 and ASSISTments 2017 demonstrate that DESKT consistently outperforms mainstream baseline models. Ablation studies and interpretability analyses further validated the effectiveness of each key component and the ability of the model to provide interpretable explanations for anomalous response behavior.
+The aim of knowledge tracing (KT), which is a core task in intelligent educational systems, is to
+dynamically estimate the knowledge states of students and predict their future performance from
+historical learning interactions. In the existing methods, incorrect responses are implicitly assumed to
+stem solely from insufficient knowledge mastery, thereby overlooking slips induced by noncognitive
+factors (e.g., emotional states) and treating them as noise to be suppressed. This assumption biases
+knowledge state estimation processes and limits the interpretability of model predictions. To address
+these limitations, we propose a decoupled emotion-driven slip-aware KT model (DESKT) that
+comprises two core modules: (i) a dynamic knowledge state modeling module that integrates dynamic
+key–value memory networks (DKVMNs) with item response theory (IRT) to estimate students’
+knowledge mastery levels and (ii) an emotion-driven dynamic slip module that uses Emotion-GRU
+to estimate slip probabilities from emotional features. During the inference procedure, the knowledge
+mastery probability and slip probability are fused via multiplicative fusion. Furthermore, we introduce
+a knowledge state–guided decoupling optimization strategy that employs gradient isolation and
+weakly supervised pseudolabels to prevent the slip module from indiscriminately attributing all
+incorrect responses to emotional interference, thereby achieving reasonable slip attribution results.
+Experiments conducted on the ASSISTments 2012 and 2017 datasets show that DESKT consistently
+outperforms the mainstream baselines in terms of predictive performance while also providing
+interpretable estimates of emotion-related slips.
 
 ## Overall Architecture
 ![DESKT模型架构图](deskt.PNG)
